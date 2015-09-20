@@ -1,0 +1,15 @@
+{
+  "name": "asker-advanced-agent",
+  "version": "0.0.1",
+  "description": "Advanced HTTP/HTTPS agent with top level pooling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Phillip Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)",
+  "maintainers": [
+    "Phillip Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)",
+    "Vladimir Varankin <nek.narqo@gmail.com> (http://github.com/narqo)"
+  ],
+  "license": "WTFPL"
+}

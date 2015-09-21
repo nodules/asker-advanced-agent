@@ -5,9 +5,7 @@ var http = require('http'),
 function agentFactory(BaseAgent) {
     function Agent(options) {
         BaseAgent.call(this, options);
-
         this.agentName = options.name;
-        Agent.pool[this.agentName] = this;
     }
 
     util.inherits(Agent, BaseAgent);
@@ -26,8 +24,11 @@ function agentFactory(BaseAgent) {
 
     Agent.pool = {};
 
-    Agent.get = function(name) {
-        return this.pool[name];
+    Agent.factory = function(options) {
+        if ( ! this.pool[options.name]) {
+            this.pool[options.name] = new Agent(options);
+        }
+        return this.pool[options.name];
     };
 
     return Agent;
@@ -40,7 +41,7 @@ exports.httpsAgent = agentFactory(https.Agent);
 
 /**
  * @param {Object} options
- * @param {String} options.name
+ * @param {String} [options.name]
  * @param {String} options.protocol
  * @param {Number} options.maxSocket
  * @constructor
@@ -52,12 +53,10 @@ function AdvancedAgent(options) {
         protocol = protocol.substring(0, protocol.length - 1);
     }
 
-    var name = options.name;
-
-    if ( ! name || name === 'globalAgent') {
+    if ( ! options.name || options.name === 'globalAgent') {
         return protocol === 'https' ? https.globalAgent : http.globalAgent;
     } else {
         var agentCls = protocol === 'https' ? exports.httpsAgent : exports.httpAgent;
-        return agentCls.get(name) || new agentCls(options);
+        return agentCls.factory(options);
     }
 }

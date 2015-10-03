@@ -5,7 +5,7 @@ var http = require('http'),
 function agentFactory(BaseAgent) {
     function Agent(options) {
         BaseAgent.call(this, options);
-        this.agentName = options.name;
+        this.name = options.name;
     }
 
     util.inherits(Agent, BaseAgent);
@@ -14,7 +14,7 @@ function agentFactory(BaseAgent) {
         var res = Agent.super_.prototype.removeSocket.apply(this, arguments);
 
         if (Object.keys(this.requests).length === 0 && Object.keys(this.sockets).length === 0) {
-            delete Agent.pool[this.agentName];
+            delete Agent.pool[this.name];
         }
 
         this.emit('socketRemoved');

@@ -11,5 +11,11 @@
     "Phillip Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)",
     "Vladimir Varankin <nek.narqo@gmail.com> (http://github.com/narqo)"
   ],
-  "license": "WTFPL"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "eslint": "^1.6.0",
+    "mitm": "^1.2.0",
+    "mocha": "^2.3.3"
+  }
 }

@@ -86,7 +86,7 @@ describe('Agent Pool', function() {
             return req;
         }
 
-        for(var i = 0; i < NUM_HTTP_CALLS; i++) {
+        for (var i = 0; i < NUM_HTTP_CALLS; i++) {
             runHttp();
         }
     });

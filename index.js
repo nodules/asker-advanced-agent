@@ -13,7 +13,11 @@ function agentFactory(BaseAgent) {
     Agent.prototype.removeSocket = function() {
         var res = Agent.super_.prototype.removeSocket.apply(this, arguments);
 
-        if (Object.keys(this.requests).length === 0 && Object.keys(this.sockets).length === 0) {
+        if (
+            Object.keys(this.requests).length === 0
+            && Object.keys(this.sockets).length === 0
+            && (this.freeSockets === undefined || Object.keys(this.freeSockets).length === 0)
+        ) {
             delete Agent.pool[this.name];
         }
 

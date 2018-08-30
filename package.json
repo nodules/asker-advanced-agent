@@ -1,6 +1,6 @@
 {
   "name": "asker-advanced-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "asker advanced HTTP/HTTPS agent as a standalone module",
   "main": "index.js",
   "scripts": {
